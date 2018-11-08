@@ -14,11 +14,11 @@ class Session {
         $_SESSION = [];
     }
 
-    public static function isValid(string $keyName) {
+    public static function isValid($keyName) {
         return preg_match('/^[a-z][a-z0-9_]*$/', $keyName);
     }
 
-    public static function exists(string $keyName) {
+    public static function exists($keyName) {
         if (self::isValid($keyName)) {
             return isset($_SESSION[$keyName]);
         } else {
