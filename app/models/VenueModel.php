@@ -31,4 +31,27 @@
                 return null;
             }
         }
+        
+        /**
+         * Metod vraca niz objekata sa podacima o tagovima koji su dodjeljeni
+         * smjestajnom kapacitetu ciji ID broj je prosljedjen kao argumnet
+         * @param int $id ID broj smjestajnih kapaciteta
+         * @return array
+         */
+        public static function getTagsForVenueId($id) {
+            $id = intval($id);
+            $SQL = 'SELECT * FROM venue_tag WHERE venue_id = ?;';
+            $prep = DataBase::getInstance()->prepare($SQL);
+            $res = $prep->execute([$id]);
+            if ($res) {
+                $spisak = $prep->fetchAll(PDO::FETCH_OBJ);
+                $list = [];
+                foreach ($spisak as $item) {
+                    $list[] = TagModel::getById($item->tag_id);
+                }
+                return $list;
+            } else {
+                return null;
+            }
+        }
     }
