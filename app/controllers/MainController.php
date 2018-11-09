@@ -24,9 +24,29 @@
                 }
             }
         }
-
+        
+        /**
+         * Ovaj metod gasi sesiju cime efektivno unistava sve u sesiji
+         * a zatim preusmjerava korisnika na stranicu za prijavu na login rutu
+         */
         public function logout() {
             Session::end();
             Misc::redirect('login');
+        }
+        
+        /**
+         * Metod koji salje view spisak smjestanih kapaciteta za kategoriju za datim slug
+         * @param string $categorySlug
+         * @return type
+         */
+        public function listByCategory($categorySlug){
+            $category = VenueCategoryModel::getBySlug($categorySlug);
+            
+            if (!$category) {
+                Misc::redirect('');
+            }
+            
+            $venues = VenueModel::getVenuesByVenueCategoryId($category->venue_category_id);
+            $this->set('venue', $venues);
         }
     }

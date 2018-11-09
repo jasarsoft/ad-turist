@@ -10,7 +10,11 @@
             'Controller' => 'Main',
             'Method'     => 'logout'
         ],
-
+        [
+            'Pattern'    => '|^category/([a-z0-9\-]+)/?$|',
+            'Controller' => 'Main',
+            'Method'     => 'listByCategory'
+        ],
         [
             'Pattern'    => '|^.*$|',
             'Controller' => 'Main',

@@ -54,4 +54,21 @@
                 return null;
             }
         }
+        
+        /**
+         * Metod koji vraca niz objekata sa podacima smjestajnih kapaciteta koji 
+         * spajaju pod kategoriju ciji ID broj je dat kao argument
+         * @param int $id
+         * @return array
+         */
+        public static function getVenuesByVenueCategoryId($id) {
+            $SQL = 'SELECT * FROM venue WHERE venue_category_id = ? ORDER BY `title`;';
+            $prep = DataBase::getInstance()->prepare($SQL);
+            $res = $prep->execute([$id]);
+            if ($res) {
+                return $prep->fetchAll(PDO::FETCH_OBJ);
+            } else {
+                return [];
+            }
+        }
     }

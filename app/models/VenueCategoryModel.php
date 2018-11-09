@@ -22,7 +22,7 @@
          * Metod koji vraca objekat sa podacima smjestanog kapaciteta (objekta) ciji
          * je venue_category_id dat kao argument metode
          * @param int $id
-         * @return array
+         * @return stdClass | NULL
          */
         public static function getById($id) {
             $id = intval($id);
@@ -34,5 +34,22 @@
             } else {
                 return null;
             }
+        }
+        
+        /**
+         * Metod koji vraca objekat sa podacima smjestanog kapaciteta (objekta) ciji
+         * je slug dat kao argument metode
+         * @param int $slug
+         * @return stdClass | NULL
+         */
+        public static function getBySlug($slug) {
+            $SQL = 'SELECT * FROM venue_category WHERE slug = ?;';
+            $prep = DataBase::getInstance()->prepare($SQL);
+            $res = $prep->execute([$id]);
+            if ($res) {
+                return $prep->fetch(PDO::FETCH_OBJ);
+            } else {
+                return null;
+            } 
         }
     }
