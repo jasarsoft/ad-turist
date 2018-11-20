@@ -26,13 +26,13 @@ class Session {
         }
     }
 
-    public static function set(string $keyName, $value) {
+    public static function set($keyName, $value) {
         if (self::isValid($keyName)) {
             $_SESSION[$keyName] = $value;
         }
     }
 
-    public static function get(string $keyName, $default = '') {
+    public static function get($keyName, $default = '') {
         if (self::isValid($keyName) and self::exists($keyName)) {
             return $_SESSION[$keyName];
         } else {
@@ -40,7 +40,7 @@ class Session {
         }
     }
 
-    public static function delete(string $keyName) {
+    public static function delete($keyName) {
         if (self::isValid($keyName) and self::exists($keyName)) {
             unset($_SESSION[$keyName]);
         }

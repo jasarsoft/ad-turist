@@ -14,7 +14,7 @@
                 <div class="form-group">
                     <label for="password">Lozinka:</label><br>
                     <input type="password" name="password" required class="form-control"
-                           pattern="^.{6,255}$" placeholder="Unesite lozinku">
+                           pattern="^.{5,255}$" placeholder="Unesite lozinku">
                 </div>
 
                 <div class="form-group">
