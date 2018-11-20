@@ -1,5 +1,28 @@
 <?php
+    /**
+     * Osnovni kontroler aplikacije koji se koristi za izvrsavanje
+     * zahtjeva upuceni proema podrazumjevnim rutama koje poznaje sajt.
+     */
     class MainController extends Controller {
+        /**
+         * Ovaj metod prepisuje podrazumjevni index metod kontrolera i njegova
+         * uloga je da provjeri da li postoji prijavljeni korisnik u sesiji.
+         * Ako ne postoji, metod preusmjerava posetioce na stranicu za odjavu
+         * Stranica za odjavu ce izvrsiti logout metodo ovog kontrolera, koji ce
+         * na kraju kada ocisti sesiju da preusmjeri posetioca na login stranu.
+         */
+        public function index() {
+            if (!Session::exists('user_id')) {
+                Misc::redirect('logout');
+            }
+        }
+        
+        /**
+         * Ovaj metod provjera da li postoje podaci za prijavu poslati HTTP POST
+         * metodom, vrsi njihovu validaciju, provjera postojanje korisnika sa tim
+         * pritstupnim parametrima i u slicaju da sve provjere prodju bez greske
+         * metod kreira sesiju za korisnika i preusmjerava korisnika na default rutu.
+         */
         public function login() {
             if (!empty($_POST)) {
                 $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
@@ -47,6 +70,6 @@
             }
             
             $venues = VenueModel::getVenuesByVenueCategoryId($category->venue_category_id);
-            $this->set('venue', $venues);
+            $this->set('venues', $venues);
         }
     }

@@ -1,9 +1,9 @@
 <?php
     abstract class Configuration {
         const DB_HOST = 'localhost';
-        const DB_NAME = 'root';
+        const DB_NAME = 'ad-turist';
         const DB_USER = 'root';
-        const DB_PASS = 'ad-turist';
+        const DB_PASS = 'root';
 
         const BASE_PATH = '/ad-turist/';
         const BASE_URL = 'http://localhost:8080' . Configuration::BASE_PATH;
