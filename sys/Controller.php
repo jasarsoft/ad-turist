@@ -2,7 +2,7 @@
     abstract class Controller {
         private $podaci = [];
 
-        protected function set(string $name, $value) {
+        protected function set($name, $value) {
             if (preg_match('|^[A-z0-9_]+$|', $name)) {
                 $this->podaci[$name] = $value;
             }
