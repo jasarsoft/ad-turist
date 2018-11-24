@@ -37,7 +37,15 @@
          * @return void
          */
         public function edit($id) {
-            if (!$POST) return;
+            $location = LocationModel::getById($id);
+            
+            if (!isset($location)) {
+                Misc::redirect('admin/locations/');
+            }
+            
+            $this->set('location', $location);
+            
+            if (!isset($_POST)) return;
             
             $name = filter_input(INPUT_POST, 'name');
             $slug = filter_input(INPUT_POST, 'slug');
