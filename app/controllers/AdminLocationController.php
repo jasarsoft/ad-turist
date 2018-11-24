@@ -17,7 +17,7 @@
          * @return void
          */
         public function add() {
-            if (!$POST) return;
+            if (!isset($_POST)) return;
             
             $name = filter_input(INPUT_POST, 'name');
             $slug = filter_input(INPUT_POST, 'slug');
