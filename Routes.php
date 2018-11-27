@@ -42,6 +42,22 @@
             'Controller' => 'AdminVenueCategory',
             'Method'     => 'edit'
         ],
+        #tags
+        [
+            'Pattern'    => '|^admin/tags/?$|',
+            'Controller' => 'AdminTag',
+            'Method'     => 'index'
+        ],
+        [
+            'Pattern'    => '|^admin/tags/add/?$|',
+            'Controller' => 'AdminTag',
+            'Method'     => 'add'
+        ],
+        [
+            'Pattern'    => '|^admin/tags/edit/([0-9]+)/?$|',
+            'Controller' => 'AdminTag',
+            'Method'     => 'edit'
+        ],
         
         [
             'Pattern'    => '|^category/([a-z0-9\-]+)/?$|',
