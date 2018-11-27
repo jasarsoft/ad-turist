@@ -1,0 +1,12 @@
+Oglasavanje smjestajni kapaciteta za turiste
+
+Aplikacija treba da omoguci korisniku da postavi oglas za izdvajanje smjestaja za turiste.
+Korisnik moze imati ulogu administratora ili posjetioca
+
+Administrator mora da se prijavi da bi dodavao oglas za smjestajni kapacitet na portal.
+Za svaki oglas treba omoguciti administratoru da obiljezi najosnovnija svojstva, kao sto su naslov oglasa, lokacija smjestaja, opis, cijena koristenja smjestaja, fotografije koje moze a doda uz oglas, kao i karakteristike samog smjestaja, kao sto su broj soba, broj kreveta, posjedovanje kuhinje, postojanje odredjenih pogodnosti, kao stu su kablovska televizija, internet, telefon, garaza ili parking mjesto koje pripada korisniku smjestaja itd. Sve ostale osobine, karakteristike i svojstva oglasa koja mogu da budu podesena su prednost u smislu realizacije projekta.
+
+Neprijavljeni korisnici tj posjetioci mogu da vrste pretragu po filterima, npr. opseg cijena, posjedovanje odredjenih pogodnosti (parking, internet...), lokacija na kojoj je smjestani kapacitet itd. Rezultati pretrage treba da prikazuju liste oglasa u istom obliku kao i listanje po kategoriji (kuca, hotelska soba u hostelu itd) ili po lokaciji (mjestima u kojima je smjestaj). Kada se otvori stranica odredjenog oglasa, svi podaci treba da budu prikazani na pregledan nacin i da budu jasno uocljivi i dostupni bez dodatnih akcija od strane korisnika.
+
+Omoguciti responsive dizajn tako da stranice za listanje i za prikaz oglasa budu prilagodjene i za mobilne telefone. 
+Stranice za dodavanje oglasa za prijavljene korisnike tj. stranice u CMS djelu palikacije ne moraju da budu realizovane u responsive dizajnu.
