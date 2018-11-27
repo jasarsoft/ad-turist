@@ -1,0 +1,10 @@
+Posjetilac
+	- Main (pregled po kategorijama/login/logout/details)
+	- Pretraga (pregled filtriranih objekata)
+
+Administrator:
+	- Rad sa objektima (list/add/edit/delete)
+	- Rad sa slikama objekata (list/add/edit/delete)
+	- Rad sa kategorijama objekata (list/add/edit/delete)
+	- Rad sa tagovima objekata (list/add/edit/delete/assign)
+	- Rad sa lokacijama (list/add/edit/delete)
