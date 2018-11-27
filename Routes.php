@@ -10,6 +10,7 @@
             'Controller' => 'Main',
             'Method'     => 'logout'
         ],
+        #location
         [
             'Pattern'    => '|^admin/locations/?$|',
             'Controller' => 'AdminLocation',
@@ -25,11 +26,29 @@
             'Controller' => 'AdminLocation',
             'Method'     => 'edit'
         ],
+        #category
+        [
+            'Pattern'    => '|^admin/categories/?$|',
+            'Controller' => 'AdminVenueCategory',
+            'Method'     => 'index'
+        ],
+        [
+            'Pattern'    => '|^admin/categories/add/?$|',
+            'Controller' => 'AdminVenueCategory',
+            'Method'     => 'add'
+        ],
+        [
+            'Pattern'    => '|^admin/categories/edit/([0-9]+)/?$|',
+            'Controller' => 'AdminVenueCategory',
+            'Method'     => 'edit'
+        ],
+        
         [
             'Pattern'    => '|^category/([a-z0-9\-]+)/?$|',
             'Controller' => 'Main',
             'Method'     => 'listByCategory'
         ],
+        
         [
             'Pattern'    => '|^.*$|',
             'Controller' => 'Main',
