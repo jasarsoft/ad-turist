@@ -7,8 +7,8 @@
         </header>
         
         <form method='post'>
-            <label for='name'>Ime:</label>
-            <input type='text' name='name' id='name' required value='<?php echo htmlspecialchars($DATA['venue']->name); ?>'><br>
+            <label for='title'>Ime:</label>
+            <input type='text' name='title' id='title' required value='<?php echo htmlspecialchars($DATA['venue']->name); ?>'><br>
             
             <label for='slug'>Slug:</label>
             <input type='text' name='slug' id='slug' required pattern='[a-z0-9\-]+' value='<?php echo htmlspecialchars($DATA['venue']->slug); ?>'><br>

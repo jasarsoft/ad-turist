@@ -7,8 +7,8 @@
         </header>
         
         <form method='post'>
-            <label for='name'>Ime:</label>
-            <input type='text' name='name' id='name' required><br>
+            <label for='title'>Ime:</label>
+            <input type='text' name='title' id='title' required><br>
             
             <label for='slug'>Slug:</label>
             <input type='text' name='slug' id='slug' required pattern='[a-z0-9\-]+'><br>
@@ -36,10 +36,15 @@
                 <?php endforeach; ?>
             </select>
             
+            <label>Specijalni dodaci/tagovi</label><br>
+            <?php foreach ($DATA['tags'] as $tag): ?>
+            <input type='checkbox' name='tag_ids[]' value='<?php echo $tag->tag_id; ?>' > <?php echo htmlspecialchars($tag->name); ?><br>
+            <?php endforeach; ?>
+            
             <button type='submit'>Dodaj</button>
         </form>
         
-        <?php if (isset($DATA['message'])): ?>
+        <?php if ($DATA['message']): ?>
         <p><?php echo htmlspecialchars($DATA['message']); ?></p>
         <?php endif; ?>
     </div>

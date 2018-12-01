@@ -22,7 +22,7 @@
                     <?php foreach($DATA['venues'] as $venue): ?>
                     <tr>
                         <td><?php echo $venue->venue_id; ?></td>
-                        <td><?php echo htmlspecialchars($venue->name); ?></td>
+                        <td><?php echo htmlspecialchars($venue->title); ?></td>
                         <td><?php echo htmlspecialchars($venue->slug); ?></td>
                         <td><?php Misc::url('admin/locations/edit/' . $venue->venue_id, 'Edit'); ?></td>
                     </tr>
