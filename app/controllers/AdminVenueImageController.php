@@ -8,9 +8,12 @@ class AdminVenueImageController extends AdminController {
     
     public function listVenueImages($venue_id) {
         $this->set('images', ImageModel::getByVenueId($venue_id));
+        $this->set('venue_id', $venue_id);
     }
     
     public function uploadImage($venue_id) {
+        $this->set('venue_id', $venue_id);
+        
         if (!$_FILES or !isset($_FILES['image'])) return;
         
         if ($_FILES['image']['error'] != 0) {

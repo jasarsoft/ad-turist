@@ -75,6 +75,18 @@
             'Method'     => 'edit'
         ],
         
+        #image
+        [
+            'Pattern'    => '|^admin/images/venue/([0-9]+)/?$|',
+            'Controller' => 'AdminVenueImage',
+            'Method'     => 'listVenueImages'
+        ],
+        [
+            'Pattern'    => '|^admin/images/venue/([0-9]+)/add/?$|',
+            'Controller' => 'AdminVenueImage',
+            'Method'     => 'uploadImage'
+        ],
+        
         [
             'Pattern'    => '|^category/([a-z0-9\-]+)/?$|',
             'Controller' => 'Main',

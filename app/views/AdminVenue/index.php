@@ -24,7 +24,10 @@
                         <td><?php echo $venue->venue_id; ?></td>
                         <td><?php echo htmlspecialchars($venue->title); ?></td>
                         <td><?php echo htmlspecialchars($venue->slug); ?></td>
-                        <td><?php Misc::url('admin/venues/edit/' . $venue->venue_id, 'Edit'); ?></td>
+                        <td>
+                            <?php Misc::url('admin/venues/edit/' . $venue->venue_id, 'Edit'); ?>
+                            <?php Misc::url('admin/images/venue/' . $venue->venue_id, 'Image'); ?>
+                        </td>
                     </tr>
                     <?php endforeach; ?>
                 </tbody>
