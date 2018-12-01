@@ -33,21 +33,21 @@ class AdminVenueImageController extends AdminController {
         $finfo = new finfo(FILEINFO_MIME_TYPE);
         $mimeType = $finfo->file($temporaryPath);
         
-        if ($mimeType != 'image/jpg') {
+        if ($mimeType != 'image/jpeg') {
             $this->set('message', 'Dozvoljeno je dodavanje samo JPG slika.');
             return;
         }
         
         #Slika hostela u Beogradu   123
-        $basename = basename($originalName);
-        $basename = strtolower($basename);
-        $basename = preg_replace('[^a-z0-9\- ]', '', $basename);
-        $basename = preg_replace(' +', '-', $basename);
+        $baseName = basename($originalName);
+        $baseName = strtolower($baseName);
+        $baseName = preg_replace('[^a-z0-9\- ]', '', $baseName);
+        $baseName = preg_replace(' +', '-', $baseName);
         #slika-hostela-u-beogradu-123
         
-        $filename = date('YmdHisu') . '-' . $basename . '.jpg';
+        $fileName = date('YmdHisu') . '-' . $baseName . '.jpg';
         
-        $newLocation = Configuration::IMAGE_DATA_PATH . $filename;
+        $newLocation = Configuration::IMAGE_DATA_PATH . $fileName;
         
         $res = move_uploaded_file($temporaryPath, $newLocation);
         if ( !isset($res) ) {
