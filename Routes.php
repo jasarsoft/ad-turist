@@ -58,6 +58,22 @@
             'Controller' => 'AdminTag',
             'Method'     => 'edit'
         ],
+        #venues
+        [
+            'Pattern'    => '|^admin/venues/?$|',
+            'Controller' => 'AdminVenue',
+            'Method'     => 'index'
+        ],
+        [
+            'Pattern'    => '|^admin/venues/add/?$|',
+            'Controller' => 'AdminVenue',
+            'Method'     => 'add'
+        ],
+        [
+            'Pattern'    => '|^admin/venues/edit/([0-9]+)/?$|',
+            'Controller' => 'AdminVenue',
+            'Method'     => 'edit'
+        ],
         
         [
             'Pattern'    => '|^category/([a-z0-9\-]+)/?$|',

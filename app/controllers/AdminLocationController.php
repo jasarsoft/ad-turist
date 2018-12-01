@@ -8,7 +8,7 @@
          * spisak svih lokacija
          */
         public function index() {
-            $this->set('location', LocationModel::getAll());
+            $this->set('locations', LocationModel::getAll());
         }
         
         /**
@@ -43,7 +43,7 @@
                 Misc::redirect('admin/locations/');
             }
             
-            $this->set('location', $location);
+            $this->set('locations', $location);
             
             if (!isset($_POST)) return;
             
