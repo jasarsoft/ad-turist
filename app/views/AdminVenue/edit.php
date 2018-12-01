@@ -8,7 +8,7 @@
         
         <form method='post'>
             <label for='title'>Ime:</label>
-            <input type='text' name='title' id='title' required value='<?php echo htmlspecialchars($DATA['venue']->name); ?>'><br>
+            <input type='text' name='title' id='title' required value='<?php echo htmlspecialchars($DATA['venue']->title); ?>'><br>
             
             <label for='slug'>Slug:</label>
             <input type='text' name='slug' id='slug' required pattern='[a-z0-9\-]+' value='<?php echo htmlspecialchars($DATA['venue']->slug); ?>'><br>
@@ -25,7 +25,7 @@
             <label for='location_id'>Lokacija:</label>
             <select name='location_id' id='location_id'>
                 <?php foreach ($DATA['locations'] as $item): ?>
-                <option value='<?php echo $item->location_id; ?>' <?php if ($DATA['venue']->location_id == $item->location_id) echo 'selected' ?> >
+                <option value='<?php echo $item->location_id; ?>' <?php if ($DATA['venue']->location_id == $item->location_id) echo 'selected'; ?> >
                     <?php echo htmlspecialchars($item->name); ?>
                 </option>
                 <?php endforeach; ?>
@@ -34,11 +34,17 @@
             <label for='venue_category_id'>Kategorija</label>
             <select name='venue_category_id' id='venue_category_id'>
                 <?php foreach ($DATA['categories'] as $item): ?>
-                <option value='<?php echo $item->venue_category_id; ?>' <?php if ($DATA['venue']->venue_category_id == $item->venue_category_id) echo 'selected' ?> >
+                <option value='<?php echo $item->venue_category_id; ?>' <?php if ($DATA['venue']->venue_category_id == $item->venue_category_id) { echo 'selected'; } ?> >
                     <?php echo htmlspecialchars($item->name); ?>
                 </option>
                 <?php endforeach; ?>
             </select>
+            
+            <label>Specijalni dodaci/tagovi</label><br>
+            <?php foreach ($DATA['tags'] as $tag): ?>
+            <input type='checkbox' name='tag_ids[]' value='<?php echo $tag->tag_id; ?>' <?php if (in_array($tag->tag_id, $DATA['venue']->tag_ids)) { echo 'checked'; } ?> > 
+                <?php echo htmlspecialchars($tag->name); ?><br>
+            <?php endforeach; ?><br>
             
             <button type='submit'>Izmjeni</button>
         </form>

@@ -9,4 +9,6 @@
         const BASE_URL = 'http://localhost:8080' . Configuration::BASE_PATH;
         
         const USER_SALT = 'jd38UDDhj83ejd0831jsadikuaZen883';
+        
+        const IMAGE_DATA_PATH = 'data/images/';
     }

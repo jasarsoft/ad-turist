@@ -39,7 +39,7 @@
             <label>Specijalni dodaci/tagovi</label><br>
             <?php foreach ($DATA['tags'] as $tag): ?>
             <input type='checkbox' name='tag_ids[]' value='<?php echo $tag->tag_id; ?>' > <?php echo htmlspecialchars($tag->name); ?><br>
-            <?php endforeach; ?>
+            <?php endforeach; ?><br>
             
             <button type='submit'>Dodaj</button>
         </form>

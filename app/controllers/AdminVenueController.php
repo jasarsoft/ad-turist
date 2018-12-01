@@ -35,7 +35,11 @@
             $venue_id = VenueModel::add($title, $slug, $short_text, $long_text, $price, $location_id, $venue_category_id, Session::get('user_id'));
             
             if ($venue_id) {
-                $tag_ids = filter_input(INPUT_POST, 'tag_ids', FILTER_REQUIRE_ARRAY);
+                $tag_ids = filter_input(INPUT_POST, 'tag_ids', FILTER_SANITIZE_NUMBER_INT, FILTER_REQUIRE_ARRAY);
+                
+                foreach ($tag_ids as $tag_id) {
+                    VenueModel::addTagToVenue($venue_id, $tag_id);
+                }
                 
                 Misc::redirect('admin/venues/');
             } else {
@@ -59,11 +63,17 @@
                 Misc::redirect('admin/venues/');
             }
             
+            $venue->tags = VenueModel::getTagsForVenueId($id);
+            $venue->tag_ids = [];
+            foreach ($venue->tags as $tag) {
+                $venue->tag_ids[] = $tag->tag_id;
+            }
+            
             $this->set('venue', $venue);
             
             if (!isset($_POST)) return;
             
-            $$title = filter_input(INPUT_POST, 'title');
+            $title = filter_input(INPUT_POST, 'title');
             $slug = filter_input(INPUT_POST, 'slug');
             $short_text = filter_input(INPUT_POST, 'short_text');
             $long_text = filter_input(INPUT_POST, 'long_text');
@@ -73,6 +83,16 @@
             $venue_category_id = filter_input(INPUT_POST, 'venue_category_id', FILTER_SANITIZE_NUMBER_INT);
             
             $res = VenueModel::edit($id, $title, $slug, $short_text, $long_text, $price, $location_id, $venue_category_id);
+            
+            $tag_ids = filter_input(INPUT_POST, 'tag_ids', FILTER_SANITIZE_NUMBER_INT, FILTER_REQUIRE_ARRAY);
+            
+            VenueModel::deleteAllTags($id);
+            if (is_array($tag_ids) || is_object($tag_ids)) {
+                foreach ($tag_ids as $tag_id) {
+                    VenueModel::addTagToVenue($id, $tag_id);
+                }
+            }
+            
             
             if ($res) {
                 Misc::redirect('admin/venues/');

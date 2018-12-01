@@ -111,4 +111,27 @@
             $prep = DataBase::getInstance()->prepare($SQL);
             return $prep->execute([$title, $slug, $short_text, $long_text, $price, $location_id, $venue_category_id, $id]);
         }
+        
+        /**
+         * Metod dodjeljuje odabrani tag u odabrani smjestajni prostor
+         * @param int $venue_id
+         * @param int $tag_id
+         * @return boolean
+         */
+        public static function addTagToVenue($venue_id, $tag_id) {
+            $SQL = 'INSERT INTO venue_tag (venue_id, tag_id) VALUES (?, ?);';
+            $prep = DataBase::getInstance()->prepare($SQL);
+            return $prep->execute([$venue_id, $tag_id]);
+        }
+        
+        /**
+         * Brise sve tagove koji su bili dodjeljeni ovom smjestajnom prostoru
+         * @param int $venue_id
+         * @return boolean | int
+         */
+        public static function deleteAllTags($venue_id) {
+            $SQL = 'DELETE FROM venue_tag WHERE venue_id = ?;';
+            $prep = DataBase::getInstance()->prepare($SQL);
+            return $prep->execute([$venue_id]);
+        }
     }
