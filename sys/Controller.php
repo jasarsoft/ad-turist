@@ -7,6 +7,10 @@
                 $this->podaci[$name] = $value;
             }
         }
+        
+        protected function del() {
+            $this->podaci = [];
+        }
 
         public function getData() {
             return $this->podaci;

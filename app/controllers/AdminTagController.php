@@ -17,7 +17,7 @@
          * @return void
          */
         public function add() {
-            if (!isset($_POST)) return;
+            if (empty($_POST)) return;
             
             $name = filter_input(INPUT_POST, 'name');
             $image_class = filter_input(INPUT_POST, 'image_class');
@@ -45,7 +45,7 @@
             
             $this->set('tag', $tag);
             
-            if (!isset($_POST)) return;
+            if (empty($_POST)) return;
             
             $name = filter_input(INPUT_POST, 'name');
             $image_class = filter_input(INPUT_POST, 'image_class');

@@ -21,7 +21,7 @@
             $this->set('categories', VenueCategoryModel::getAll());
             $this->set('tags', TagModel::getAll());
             
-            if (!isset($_POST)) return;
+            if (empty($_POST)) return;
             
             $title = filter_input(INPUT_POST, 'title');
             $slug = filter_input(INPUT_POST, 'slug');
@@ -71,7 +71,7 @@
             
             $this->set('venue', $venue);
             
-            if (!isset($_POST)) return;
+            if (empty($_POST)) return;
             
             $title = filter_input(INPUT_POST, 'title');
             $slug = filter_input(INPUT_POST, 'slug');

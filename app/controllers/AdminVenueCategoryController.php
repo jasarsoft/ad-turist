@@ -17,7 +17,7 @@
          * @return void
          */
         public function add() {
-            if (!isset($_POST)) return;
+            if (empty($_POST)) return;
             
             $name = filter_input(INPUT_POST, 'name');
             $slug = filter_input(INPUT_POST, 'slug');
@@ -45,7 +45,7 @@
             
             $this->set('category', $location);
             
-            if (!isset($_POST)) return;
+            if (empty($_POST)) return;
             
             $name = filter_input(INPUT_POST, 'name');
             $slug = filter_input(INPUT_POST, 'slug');

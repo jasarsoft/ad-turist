@@ -17,13 +17,13 @@
          * @return void
          */
         public function add() {
-            if (!isset($_POST)) return;
+            if (empty($_POST)) return;
             
             $name = filter_input(INPUT_POST, 'name');
             $slug = filter_input(INPUT_POST, 'slug');
             
             $location_id = LocationModel::add($name, $slug);
-            
+                        
             if ($location_id) {
                 Misc::redirect('admin/locations/');
             } else {
@@ -45,7 +45,7 @@
             
             $this->set('locations', $location);
             
-            if (!isset($_POST)) return;
+            if (empty($_POST)) return;
             
             $name = filter_input(INPUT_POST, 'name');
             $slug = filter_input(INPUT_POST, 'slug');
