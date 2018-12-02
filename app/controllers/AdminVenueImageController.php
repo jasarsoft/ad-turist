@@ -39,8 +39,8 @@ class AdminVenueImageController extends AdminController {
         }
         
         #Slika hostela u Beogradu   123
-        $baseName = basename($originalName);
-        $baseName = strtolower($baseName);
+        //$baseName = basename($originalName);
+        $baseName = strtolower($originalName);
         $baseName = preg_replace('[^a-z0-9\- ]', '', $baseName);
         $baseName = preg_replace(' +', '-', $baseName);
         #slika-hostela-u-beogradu-123
@@ -61,6 +61,6 @@ class AdminVenueImageController extends AdminController {
             return;
         }
         
-        Misc::redirect('admin/images/venue/', $venue_id);
+        Misc::redirect('admin/images/venue/' . $venue_id);
     }
 }

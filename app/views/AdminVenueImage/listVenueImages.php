@@ -22,7 +22,7 @@
                     <tr>
                         <td><?php echo $image->image_id; ?></td>
                         <td>
-                            <img src='<?php echo Configuration::BASE_URL . htmlspecialchars($image->path); ?>' class='small-image' >
+                            <img src='<?php echo Configuration::BASE_URL . htmlspecialchars($image->path); ?>' class='small-image-new' >
                         </td>
                         <td><?php Misc::url('admin/images/venue/' . $DATA['venue_id'] . '/edit/' . $image ->image_id, 'Delete'); ?></td>
                     </tr>
