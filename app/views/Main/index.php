@@ -16,7 +16,9 @@
                         <select class='form-control' name='location_id'>
                             <option value='-1'>. . .</option>
                             <?php foreach ($DATA['locations'] as $location): ?>
-                            <option value="<?php echo $location->location_id; ?>"><?php echo htmlspecialchars($location->name); ?></option>
+                            <option value="<?php echo $location->location_id; ?>" <?php if ($location->location_id == @$DATA['location_id']) echo 'selected'; ?> >
+                                <?php echo htmlspecialchars($location->name); ?>
+                            </option>
                             <?php endforeach; ?>
                         </select>
                     </div>
@@ -30,7 +32,9 @@
                         <select class='form-control' name='venue_category_id'>
                             <option value='-1'>. . .</option>
                             <?php foreach ($DATA['categories'] as $category): ?>
-                            <option value="<?php echo $category->location_id; ?>"><?php echo htmlspecialchars($category->name); ?></option>
+                            <option value="<?php echo $category->venue_category_id; ?>" <?php if ($category->venue_category_id == @$DATA['venue_category_id']) echo 'selected'; ?> >
+                                <?php echo htmlspecialchars($category->name); ?>
+                            </option>
                             <?php endforeach; ?>
                         </select>
                     </div>
@@ -41,7 +45,7 @@
                 <form class='form-group'>
                     <?php foreach ($DATA['tags'] as $tag): ?>
                     <label class='checkbox-inline' >
-                        <input type='checkbox' name='tag_ids[]' value='<?php echo $tag->tag_id; ?>'>
+                        <input type='checkbox' name='tag_ids[]' value='<?php echo $tag->tag_id; ?>' <?php if (@in_array($tag->tag_id, @$DATA['tag_ids'])) echo 'checked'; ?>>
                         <i class='<?php echo htmlspecialchars($tag->image_class); ?>' ></i>
                         <?php echo htmlspecialchars($tag->name); ?>
                     </label>

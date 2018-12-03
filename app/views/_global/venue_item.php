@@ -13,7 +13,7 @@
     </div>
     <div class='venue-tags'>
         <?php foreach($venue->tags as $tag): ?>
-        <i class='<?php echo htmlspecialchars($tag->image_class); ?>' title='<?php echo htmlspecialchars($tag->name); ?>' ></i>
+        <i class="<?php echo htmlspecialchars($tag->image_class); ?>" title="<?php echo htmlspecialchars($tag->name); ?>" ></i>
         <?php endforeach; ?>
     </div>
 </div>

@@ -125,5 +125,9 @@
             }
             
             $this->set('venues', $venues);
+            
+            $this->set('location_id', $location_id);
+            $this->set('venue_category_id', $venue_category_id);
+            $this->set('tag_ids', $tag_ids);
         }
     }
