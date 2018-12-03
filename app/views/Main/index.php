@@ -10,7 +10,7 @@
             <div class='col-sm-12 col-md-4'>
                 <div class='form-group'>
                     <div class='input-group'>
-                        <span clas='input-group-addon'>
+                        <span class='input-group-addon'>
                             <i class='glyphicon glyphicon-map-marker' ></i> Location
                         </span>
                         <select class='form-control' name='location_id'>
@@ -24,8 +24,8 @@
                 
                  <div class='form-group'>
                     <div class='input-group'>
-                        <span clas='input-group-addon'>
-                            <i class='glyphicon glyphicon-list-altr' ></i> Category
+                        <span class='input-group-addon'>
+                            <i class='glyphicon glyphicon-list-alt' ></i> Category
                         </span>
                         <select class='form-control' name='venue_category_id'>
                             <option value='-1'>. . .</option>
@@ -35,26 +35,25 @@
                         </select>
                     </div>
                 </div>
-                
-                <div class='col-sm-12 col-md-4'>
-                    <form clas='form-group'>
-                        <?php foreach ($DATA['tags'] as $tag): ?>
-                        <label class='checkbox-inline' >
-                            <input type='checkbox' name='tag_ids[]' value='<?php echo $tag->tag_id; ?>'>
-                            <i class='<?php echo htmlspecialchars($tag->image_class); ?>' ></i>
-                            <?php echo htmlspecialchars($tag->name); ?>
-                        </label>
-                        <?php endforeach; ?>
-                    </form>
-                </div>
-                
-                <div class='col-sm-12 col-md-4'>
-                    <button type='submit' class='btn'>
-                        <i class='glyphicon glyphicon-search' ></i>
-                        Search
-                    </button>
-                </div>
-                
+            </div>
+            
+            <div class='col-sm-12 col-md-6'>
+                <form class='form-group'>
+                    <?php foreach ($DATA['tags'] as $tag): ?>
+                    <label class='checkbox-inline' >
+                        <input type='checkbox' name='tag_ids[]' value='<?php echo $tag->tag_id; ?>'>
+                        <i class='<?php echo htmlspecialchars($tag->image_class); ?>' ></i>
+                        <?php echo htmlspecialchars($tag->name); ?>
+                    </label>
+                    <?php endforeach; ?>
+                </form>
+            </div>
+
+            <div class='col-sm-12 col-md-2'>
+                <button type='submit' class='btn'>
+                    <i class='glyphicon glyphicon-search' ></i>
+                    Search
+                </button>
             </div>
         </div>
     </form>
