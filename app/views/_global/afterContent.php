@@ -7,6 +7,7 @@
             </footer>
         </div>
         
+        <script src="<?php Configuration::BASE_URL; ?>assets/js/jquery-3.3.1.min.js"></script>
         <script src="<?php Configuration::BASE_URL; ?>assets/js/bootstrap.min.js"></script>
     </body>
 </html>

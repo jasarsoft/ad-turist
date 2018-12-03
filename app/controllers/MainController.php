@@ -103,5 +103,14 @@
             $this->set('venue', $venue);
         }
         
-        public 
+        public function search() {
+            if (empty($_POST)) {
+                Misc::redirect('');
+            }
+            
+            $location_id = filter_input(INPUT_POST, 'location_id', FILTER_SANITIZE_NUMBER_INT);
+            $venue_category_id = filter_input(INPUT_POST, 'venue_category_id', FILTER_SANITIZE_NUMBER_INT);
+            
+            $tag_ids = filter_input(INPUT_POST, 'tag_ids', FILTER_SANITIZE_NUMBER_INT, FILTER_REQUIRE_ARRAY);
+        }
     }
