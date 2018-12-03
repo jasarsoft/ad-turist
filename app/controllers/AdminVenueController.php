@@ -31,8 +31,19 @@
             
             $location_id = filter_input(INPUT_POST, 'location_id', FILTER_SANITIZE_NUMBER_INT);
             $venue_category_id = filter_input(INPUT_POST, 'venue_category_id', FILTER_SANITIZE_NUMBER_INT);
+            
+            $data = [
+                'title' => $title,
+                'slug' => $slug,
+                'short_text' => $short_text,
+                'long_text' => $long_text,
+                'price' => $price,
+                'location_id' => $location_id,
+                'venue_category_id' => $venue_category_id,
+                'user_id' => Session::get('user_id')
+            ];
    
-            $venue_id = VenueModel::add($title, $slug, $short_text, $long_text, $price, $location_id, $venue_category_id, Session::get('user_id'));
+            $venue_id = VenueModel::add($data);
             
             if ($venue_id) {
                 $tag_ids = filter_input(INPUT_POST, 'tag_ids', FILTER_SANITIZE_NUMBER_INT, FILTER_REQUIRE_ARRAY);
@@ -82,7 +93,17 @@
             $location_id = filter_input(INPUT_POST, 'location_id', FILTER_SANITIZE_NUMBER_INT);
             $venue_category_id = filter_input(INPUT_POST, 'venue_category_id', FILTER_SANITIZE_NUMBER_INT);
             
-            $res = VenueModel::edit($id, $title, $slug, $short_text, $long_text, $price, $location_id, $venue_category_id);
+            $data = [
+                'title' => $title,
+                'slug' => $slug,
+                'short_text' => $short_text,
+                'long_text' => $long_text,
+                'price' => $price,
+                'location_id' => $location_id,
+                'venue_category_id' => $venue_category_id
+            ];
+            
+            $res = VenueModel::edit($id, $data);
             
             $tag_ids = filter_input(INPUT_POST, 'tag_ids', FILTER_SANITIZE_NUMBER_INT, FILTER_REQUIRE_ARRAY);
             

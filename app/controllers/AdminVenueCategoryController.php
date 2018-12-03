@@ -22,7 +22,12 @@
             $name = filter_input(INPUT_POST, 'name');
             $slug = filter_input(INPUT_POST, 'slug');
             
-            $location_id = VenueCategoryModel::add($name, $slug);
+            $data = [
+                'name' => $name,
+                'slug' => $slug
+            ];
+            
+            $location_id = VenueCategoryModel::add($data);
             
             if ($location_id) {
                 Misc::redirect('admin/categories/');
@@ -50,7 +55,12 @@
             $name = filter_input(INPUT_POST, 'name');
             $slug = filter_input(INPUT_POST, 'slug');
             
-            $res = VenueCategoryModel::edit($id, $name, $slug);
+            $data = [
+                'name' => $name,
+                'slug' => $slug
+            ];
+            
+            $res = VenueCategoryModel::edit($id, $data);
             
             if ($res) {
                 Misc::redirect('admin/categories/');

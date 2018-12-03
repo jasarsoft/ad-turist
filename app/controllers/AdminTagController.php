@@ -22,7 +22,12 @@
             $name = filter_input(INPUT_POST, 'name');
             $image_class = filter_input(INPUT_POST, 'image_class');
             
-            $tag_id = TagModel::add($name, $image_class);
+            $data = [
+                'name' => $name,
+                'image_class' => $image_class
+            ];
+            
+            $tag_id = TagModel::add($data);
             
             if ($tag_id) {
                 Misc::redirect('admin/tags/');
@@ -50,7 +55,12 @@
             $name = filter_input(INPUT_POST, 'name');
             $image_class = filter_input(INPUT_POST, 'image_class');
             
-            $res = TagModel::edit($id, $name, $image_class);
+            $data = [
+                'name' => $name,
+                'image_class' => $image_class
+            ];
+            
+            $res = TagModel::edit($id, $data);
             
             if ($res) {
                 Misc::redirect('admin/tags/');

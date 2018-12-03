@@ -22,7 +22,12 @@
             $name = filter_input(INPUT_POST, 'name');
             $slug = filter_input(INPUT_POST, 'slug');
             
-            $location_id = LocationModel::add($name, $slug);
+            $data = [
+                'name' => $name,
+                'slug' => $slug
+            ];
+            
+            $location_id = LocationModel::add($data);
                         
             if ($location_id) {
                 Misc::redirect('admin/locations/');
@@ -50,7 +55,12 @@
             $name = filter_input(INPUT_POST, 'name');
             $slug = filter_input(INPUT_POST, 'slug');
             
-            $res = LocationModel::edit($id, $name, $slug);
+            $data = [
+                'name' => $name,
+                'slug' => $slug
+            ];
+            
+            $res = LocationModel::edit($id, $data);
             
             if ($res) {
                 Misc::redirect('admin/locations/');

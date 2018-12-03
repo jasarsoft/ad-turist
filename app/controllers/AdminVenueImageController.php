@@ -55,7 +55,12 @@ class AdminVenueImageController extends AdminController {
             return;
         }
         
-        $res = ImageModel::add($newLocation, $venue_id);
+        $data = [
+            'path' => $newLocation,
+            'venue_id' => $venue_id
+        ];
+        
+        $res = ImageModel::add($data);
         if ( !$res ) {
             $this->set('message', 'Doslo je do greske prilikom upisa u bazu podataka.');
             return;
