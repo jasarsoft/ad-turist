@@ -6,3 +6,31 @@ h1, h2 {
     width: 300px;
     height: auto;
 }
+
+.venue-item {
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.venue-image {
+    margin-right: 15px;
+    width: 250px;
+    height: auto;
+    float: left;
+}
+
+.venue-short-text {
+    border-top: 1px solid #999;
+}
+
+.venue-tags i {
+    margin: 4px;
+    font-size: 48px;
+}
+
+.venue-tags:after {
+    display: block;
+    clear: both;
+    content: '';
+}
