@@ -7,6 +7,6 @@
             </footer>
         </div>
         
-        <script src='<?php Misc::link('assets/js/bootstrap.min.js'); ?>'></script>
+        <script src="<?php Configuration::BASE_URL; ?>assets/js/bootstrap.min.js"></script>
     </body>
 </html>

@@ -93,6 +93,12 @@
             'Method'     => 'listByCategory'
         ],
         
+        [
+            'Pattern'    => '|^venue/([a-z0-9\-]+)/?$|',
+            'Controller' => 'Main',
+            'Method'     => 'venue'
+        ],
+        
         #index
         [
             'Pattern'    => '|^([0-9]+)?/?$|',
