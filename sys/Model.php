@@ -73,11 +73,8 @@ abstract class Model implements ModelInterface {
                 $nizVrijednosti = $vrijednostPolja;
             }
         }
-        
-        $spisakPolja = implode(', ', $nizImenaPolja);
-        $spisakUpitnika = implode(', ', $nizPlaceholdera);
-        
-        $SQL = 'INSERT INTO ' . $tableName . ' (' . $spisakPolja . ') VALUES (' . $spisakUpitnika . ');';
+                
+        $SQL = 'INSERT INTO ' . $tableName . ' (' . implode(', ', $nizImenaPolja) . ') VALUES (' . implode(', ', $nizPlaceholdera) . ');';
         $prep = DataBase::getInstance()->prepare($SQL);
         if ($prep) {
             $res = $prep->execute($nizVrijednosti);
@@ -112,10 +109,8 @@ abstract class Model implements ModelInterface {
                 $nizVrijednosti = $vrijednostPolja;
             }
         }
-        
-        $spisakPromjena = implode(', ', $nizPromjena);
-        
-        $SQL = 'UPDATE ' . $tableName . ' SET ' . $spisakPromjena . ' WHERE ' . $tableName . '_id = ?;';
+                
+        $SQL = 'UPDATE ' . $tableName . ' SET ' . implode(', ', $nizPromjena) . ' WHERE ' . $tableName . '_id = ?;';
         $prep = DataBase::getInstance()->prepare($SQL);
         if ($prep) {
             $nizVrijednosti[] = $id;
