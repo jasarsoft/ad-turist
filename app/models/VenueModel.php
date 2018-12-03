@@ -2,7 +2,7 @@
     /*
      * Model koji odgovara tabeli venue
      */
-    class VenueModel {
+    class VenueModel extends Model {
         /**
          * Ovaj metod vraca spisak smjestanih kapaciteta iz baze i koristi sistem paginacije;
          * Stranica $page se koristi da se izracuna pocetni indeks rezultata odakle pocinje;

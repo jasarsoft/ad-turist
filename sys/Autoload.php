@@ -2,7 +2,7 @@
 function __autoload($className) {
     if ($className == 'Configuration') {
         require_once $className . '.php';
-    } elseif (in_array($className, ['Controller', 'AdminController', 'ApiController', 'DataBase', 'Misc', 'Session'])) {
+    } elseif (in_array($className, ['Controller', 'AdminController', 'ApiController', 'DataBase', 'Misc', 'Session', 'Model'])) {
         require_once 'sys/' . $className . '.php';
     } elseif (preg_match('/^([A-Z][a-z]+)+Controller$/', $className)) {
         $fileName = 'app/controllers/' . $className . '.php';

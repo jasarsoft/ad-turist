@@ -1,9 +1,8 @@
 <?php
-
 /**
  * Osnovna klasa svih modela
  */
-abstract class Model implements ModelInterface {
+abstract class Model {
     /**
      * Metod vraca ime tabele na osnovu imena klase modela
      * @return string
@@ -68,16 +67,16 @@ abstract class Model implements ModelInterface {
                     continue;
                 }
                 
-                $nizImenaPolja = $imePolja;
-                $nizPlaceholdera = '?';
-                $nizVrijednosti = $vrijednostPolja;
+                $nizImenaPolja[] = $imePolja;
+                $nizPlaceholdera[] = '?';
+                $nizVrijednosti[] = $vrijednostPolja;
             }
         }
                 
         $SQL = 'INSERT INTO ' . $tableName . ' (' . implode(', ', $nizImenaPolja) . ') VALUES (' . implode(', ', $nizPlaceholdera) . ');';
         $prep = DataBase::getInstance()->prepare($SQL);
         if ($prep) {
-            $res = $prep->execute($nizVrijednosti);
+            $res = $prep->execute((array)$nizVrijednosti);
             if ($res) {
                 return DataBase::getInstance()->lastInsertId();
             } else {
@@ -94,7 +93,7 @@ abstract class Model implements ModelInterface {
      * @param array $data 
      * @return boolean Vraca true ako je uspjesan upit, a false ako nije;
      */
-    public static function edit(int $id, array $data) {
+    public static function edit($id, array $data) {
         $tableName = self::getTableName();
         $nizPromjena = [];
         $nizVrijednosti = [];
@@ -105,8 +104,8 @@ abstract class Model implements ModelInterface {
                     continue;
                 }
                 
-                $nizPromjena = $imePolja . ' = ?';
-                $nizVrijednosti = $vrijednostPolja;
+                $nizPromjena[] = $imePolja . ' = ?';
+                $nizVrijednosti[] = $vrijednostPolja;
             }
         }
                 

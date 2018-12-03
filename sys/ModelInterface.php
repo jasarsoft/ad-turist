@@ -31,5 +31,5 @@ class ModelInterface {
      * @param array $data 
      * @return boolean Vraca true ako je uspjesan upit, a false ako nije;
      */
-    public static function edit(int $id, array $data);
+    public static function edit($id, array $data);
 }
