@@ -79,3 +79,10 @@ article.blok > header > h1 {
     clear: both;
     content: '';
 }
+
+.gallery-image {
+    vertical-align: top;
+    margin: 10px;
+    height: auto;
+    width: 250px;
+}
