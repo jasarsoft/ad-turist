@@ -9,7 +9,14 @@
          */
         public function index($page = 0) {
             $this->set('categories', VenueCategoryModel::getAll());
-            $this->set('venues', VenueModel::getAllPaged($page));
+            
+            $venues = VenueModel::getAllPaged($page);
+            for ($i=0; $i < count($venues); $i++) {
+                $venues[$i]->images = VenueModel::getVenueImage($venues[$i]->venue_id);
+                $venues[$i]->tags   = VenueModel::getTagsForVenueId($venues[$i]->venue_id);
+            }
+            
+            $this->set('venues', $venues);
         }
         
         /**

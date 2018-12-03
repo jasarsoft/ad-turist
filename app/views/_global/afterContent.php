@@ -6,5 +6,7 @@
                 </p>
             </footer>
         </div>
+        
+        <script src='<?php Misc::link('assets/js/bootstrap.min.js'); ?>'></script>
     </body>
 </html>
