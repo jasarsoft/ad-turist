@@ -179,4 +179,173 @@
                 return [];
             }
         }
+        
+        /**
+         * Metod vraca rezultate pretrage po datim kriterijima.
+         * @param int $location_id
+         * @param int $venue_category_id
+         * @param array $tag_ids
+         * @return array
+         */
+        public static function homePageSearch($location_id, $venue_category_id, $tag_ids) {
+            if ($location_id != -1 and $venue_category_id != -1 and count($tag_ids) > 0) {
+                $tag_placeholders = [];
+                for ($i = 0; $i < count($tag_ids); $i++) {
+                    $tag_placeholders = '?';
+                }
+                $tag_placeholders_string = implode(', ', $tag_placeholders);
+                
+                $SQL = 'SELECT * ' .
+                       'FROM venue ' . 
+                       'WHERE location_id = ? AND venue_category_id = ? AND venue_id IN(' .
+                            'SELECT venue_id ' .
+                            'FROM venue_tag ' .
+                            'WHERE tag_id IN (' . $tag_placeholders_string . ')' .
+                        ') ' .
+                        'ORDER BY `title`';
+                
+                $prep = DataBase::getInstance()->prepare($SQL);
+                
+                $niz = [
+                    $location_id,
+                    $venue_category_id
+                ];
+                $niz = array_merge($niz, $tag_ids);
+                $prep->execute($niz);
+                return $prep->fetchAll(PDO::FETCH_OBJ);
+                
+            }
+            
+            if ($location_id == -1 and $venue_category_id != -1 and count($tag_ids) > 0) {
+                $tag_placeholders = [];
+                for ($i = 0; $i < count($tag_ids); $i++) {
+                    $tag_placeholders = '?';
+                }
+                $tag_placeholders_string = implode(', ', $tag_placeholders);
+                
+                $SQL = 'SELECT * ' .
+                       'FROM venue ' . 
+                       'WHERE venue_category_id = ? AND venue_id IN(' .
+                            'SELECT venue_id ' .
+                            'FROM venue_tag ' .
+                            'WHERE tag_id IN (' . $tag_placeholders_string . ')' .
+                        ') ' .
+                        'ORDER BY `title`';
+                
+                $prep = DataBase::getInstance()->prepare($SQL);
+                
+                $niz = [
+                    $venue_category_id
+                ];
+                $niz = array_merge($niz, $tag_ids);
+                $prep->execute($niz);
+                return $prep->fetchAll(PDO::FETCH_OBJ);
+                
+            }
+            
+            if ($location_id != -1 and $venue_category_id == -1 and count($tag_ids) > 0) {
+                $tag_placeholders = [];
+                for ($i = 0; $i < count($tag_ids); $i++) {
+                    $tag_placeholders = '?';
+                }
+                $tag_placeholders_string = implode(', ', $tag_placeholders);
+                
+                $SQL = 'SELECT * ' .
+                       'FROM venue ' . 
+                       'WHERE location_id = ? AND venue_id IN(' .
+                            'SELECT venue_id ' .
+                            'FROM venue_tag ' .
+                            'WHERE tag_id IN (' . $tag_placeholders_string . ')' .
+                        ') ' .
+                        'ORDER BY `title`';
+                
+                $prep = DataBase::getInstance()->prepare($SQL);
+                
+                $niz = [
+                    $location_id
+                ];
+                $niz = array_merge($niz, $tag_ids);
+                $prep->execute($niz);
+                return $prep->fetchAll(PDO::FETCH_OBJ);
+                
+            }
+            
+            if ($location_id == -1 and $venue_category_id == -1 and count($tag_ids) > 0) {
+                $tag_placeholders = [];
+                for ($i = 0; $i < count($tag_ids); $i++) {
+                    $tag_placeholders = '?';
+                }
+                $tag_placeholders_string = implode(', ', $tag_placeholders);
+                
+                $SQL = 'SELECT * ' .
+                       'FROM venue ' . 
+                       'WHERE venue_id IN(' .
+                            'SELECT venue_id ' .
+                            'FROM venue_tag ' .
+                            'WHERE tag_id IN (' . $tag_placeholders_string . ')' .
+                        ') ' .
+                        'ORDER BY `title`';
+                
+                $prep = DataBase::getInstance()->prepare($SQL);
+                $prep->execute($tag_ids);
+                return $prep->fetchAll(PDO::FETCH_OBJ);
+                
+            }
+            
+            if ($location_id != -1 and $venue_category_id != -1 and count($tag_ids) == 0) {
+                
+                $SQL =  'SELECT * ' .
+                        'FROM venue ' . 
+                        'WHERE location_id = ? AND venue_category_id = ? ' .
+                        'ORDER BY `title`';
+                
+                $prep = DataBase::getInstance()->prepare($SQL);
+                
+                $niz = [
+                    $location_id,
+                    $venue_category_id
+                ];
+
+                $prep->execute($niz);
+                return $prep->fetchAll(PDO::FETCH_OBJ);                
+            }
+            
+            if ($location_id == -1 and $venue_category_id != -1 and count($tag_ids) == 0) {
+                
+                $SQL =  'SELECT * ' .
+                        'FROM venue ' . 
+                        'WHERE venue_category_id = ? ' .
+                        'ORDER BY `title`';
+                
+                $prep = DataBase::getInstance()->prepare($SQL);
+                
+                $niz = [
+                    $venue_category_id
+                ];
+
+                $prep->execute($niz);
+                return $prep->fetchAll(PDO::FETCH_OBJ);                
+            }
+            
+            if ($location_id != -1 and $venue_category_id == -1 and count($tag_ids) == 0) {
+                
+                $SQL =  'SELECT * ' .
+                        'FROM venue ' . 
+                        'WHERE location_id = ? ' .
+                        'ORDER BY `title`';
+                
+                $prep = DataBase::getInstance()->prepare($SQL);
+                
+                $niz = [
+                    $location_id
+                ];
+
+                $prep->execute($niz);
+                return $prep->fetchAll(PDO::FETCH_OBJ);                
+            }
+            
+            if ($location_id == -1 and $venue_category_id == -1 and count($tag_ids) == 0) {
+                return self::getAll();
+            }
+        }
     }
