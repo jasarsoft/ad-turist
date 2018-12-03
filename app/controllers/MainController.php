@@ -71,7 +71,16 @@
                 Misc::redirect('');
             }
             
+            $this->set('categories', VenueCategoryModel::getAll());
+            
             $venues = VenueModel::getVenuesByVenueCategoryId($category->venue_category_id);
+            
+            for ($i=0; $i < count($venues); $i++) {
+                $venues[$i]->images = VenueModel::getVenueImage($venues[$i]->venue_id);
+                $venues[$i]->tags   = VenueModel::getTagsForVenueId($venues[$i]->venue_id);
+            }
+            
             $this->set('venues', $venues);
+            $this->set('category', $category);
         }
     }
