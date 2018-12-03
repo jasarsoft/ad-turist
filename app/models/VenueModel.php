@@ -78,47 +78,7 @@
                 return [];
             }
         }
-        
-        /**
-         * Metod vrsi unos nove stavke u bazu podatak za smjesajni prostor
-         * @param type $title
-         * @param type $slug
-         * @param type $short_text
-         * @param type $long_text
-         * @param type $price
-         * @param type $location_id
-         * @param type $venue_category_id
-         * @return boolean|ing ID broj smjestajnog prostora ili FALSE u slucaju greske
-         */
-        public static function add($title, $slug, $short_text, $long_text, $price, $location_id, $venue_category_id, $user_id) {
-            $SQL = 'INSERT INTO venue (`title`, slug, short_text, long_text, price, location_id, venue_category_id, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?);';
-            $prep = DataBase::getInstance()->prepare($SQL);
-            $res = $prep->execute([$title, $slug, $short_text, $long_text, $price, $location_id, $venue_category_id, $user_id]);
-            if ($res) {
-                return DataBase::getInstance()->lastInsertId();
-            } else {
-                return false;
-            }
-        }
-
-        /**
-         * Metod mjenja sadrzaj zapisa u bazi podataka za izabrani smjestajni prostor
-         * @param type $id
-         * @param type $title
-         * @param type $slug
-         * @param type $short_text
-         * @param type $long_text
-         * @param type $price
-         * @param type $location_id
-         * @param type $venue_category_id
-         * @return boolean 
-         */
-        public static function edit($id, $title, $slug, $short_text, $long_text, $price, $location_id, $venue_category_id) {
-            $SQL = 'UPDATE venue SET `title` = ?, slug = ?, short_text = ?, long_text = ?, price = ?, location_id = ?, venue_category_id = ? WHERE venue_id = ?;';
-            $prep = DataBase::getInstance()->prepare($SQL);
-            return $prep->execute([$title, $slug, $short_text, $long_text, $price, $location_id, $venue_category_id, $id]);
-        }
-        
+         
         /**
          * Metod dodjeljuje odabrani tag u odabrani smjestajni prostor
          * @param int $venue_id
