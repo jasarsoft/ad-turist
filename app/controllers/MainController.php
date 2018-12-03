@@ -102,4 +102,6 @@
             
             $this->set('venue', $venue);
         }
+        
+        public 
     }

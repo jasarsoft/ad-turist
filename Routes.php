@@ -1,4 +1,31 @@
 <?php
+    /**
+     * Ova datoteka vraca niz asocijativni nizova koji predstavljaju rute kojie se postoje u ovoj aplikaciji.
+     * 
+     * <pre>
+     * Svaka ruta je asocijativni niz koji mora da sadrzi indekse:
+     * Pattern      - regularni izraz koji mora da odgovara zahtjevu da se ruta izvrsi
+     * Controller   - ime kontrolera koji treba koristiti za odgovor zahtjevu;
+     *                ako je ime kontrolera Main ime klase je onda MainController;
+     *                kao vrijednost ovog indeksa asocijativnog niza ide samo Main a ne MainController kao puno ime klase;
+     * Method       - ime metoda izabranog kontrolera koji treba izvrsiti za odgovor na pritigli zahtjev koji odgovara ruti;
+     * </pre>
+     * Primjer:
+     * <pre><code>
+     * return [
+     *  [
+     *      'Pattern'   => '|^login/?$|',
+     *      'Controller => 'Main',
+     *      'Method'    => 'login'
+     * ],
+     * #posljednja ruta koja ce se izvrsiti ako ni jedna ne odgovara pritiglom zahtjevu
+     * [
+            'Pattern'    => '|^.*$|',
+            'Controller' => 'Main',
+            'Method'     => 'index'
+        ]
+     * ]
+     */
     return [
         [
             'Pattern'    => '|^login/?$|',
@@ -97,6 +124,13 @@
             'Pattern'    => '|^venue/([a-z0-9\-]+)/?$|',
             'Controller' => 'Main',
             'Method'     => 'venue'
+        ],
+        
+        #search
+         [
+            'Pattern'    => '|^search/?$|',
+            'Controller' => 'Main',
+            'Method'     => 'search'
         ],
         
         #index
