@@ -83,4 +83,19 @@
             $this->set('venues', $venues);
             $this->set('category', $category);
         }
+        
+        public function venue($slug) {
+            $venue = VenueModel::getBySlug($slug);
+            
+            if (!$venue) {
+                Misc::redirect('');
+            }
+            
+            $this->set('categories', VenueCategoryModel::getAll());
+            
+            $venue->images = VenueModel::getVenueImage($venue->venue_id);
+            $venue->tags   = VenueModel::getTagsForVenueId($venue->venue_id);
+            
+            $this->set('venue', $venue);
+        }
     }

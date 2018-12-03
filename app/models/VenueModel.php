@@ -86,6 +86,22 @@
         }
         
         /**
+         * Metod koji vraca objekat sa podacima smjestajnog kapciteta ciji slug je dat kao argumnet metoda
+         * @param string $slug
+         * @return stdClass
+         */
+        public static function getBySlug($slug) {
+            $SQL = 'SELECT * FROM venue WHERE slug = ?;';
+            $prep = DataBase::getInstance()->prepare($SQL);
+            $res = $prep->execute([$slug]);
+            if ($res) {
+                return $prep->fetch(PDO::FETCH_OBJ);
+            } else {
+                return [];
+            }
+        }
+        
+        /**
          * Metod vrsi unos nove stavke u bazu podatak za smjesajni prostor
          * @param type $title
          * @param type $slug
