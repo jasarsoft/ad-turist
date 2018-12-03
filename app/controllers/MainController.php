@@ -10,6 +10,7 @@
         public function index($page = 0) {
             $this->set('categories', VenueCategoryModel::getAll());
             $this->set('locations', LocationModel::getAll());
+            $this->set('tags', TagModel::getAll());
             
             $venues = VenueModel::getAllPaged($page);
             for ($i=0; $i < count($venues); $i++) {

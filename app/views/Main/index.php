@@ -35,6 +35,19 @@
                         </select>
                     </div>
                 </div>
+                
+                <div class='col-sm-12 col-md-4'>
+                    <form clas='form-group'>
+                        <?php foreach ($DATA['tags'] as $tag): ?>
+                        <label class='checkbox-inline' >
+                            <input type='checkbox' name='tag_ids[]' value='<?php echo $tag->tag_id; ?>'>
+                            <i class='<?php echo htmlspecialchars($tag->image_class); ?>' ></i>
+                            <?php echo htmlspecialchars($tag->name); ?>
+                        </label>
+                        <?php endforeach; ?>
+                    </form>
+                </div>
+                
             </div>
         </div>
     </form>
