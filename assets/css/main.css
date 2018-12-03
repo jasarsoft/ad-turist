@@ -84,5 +84,19 @@ article.blok > header > h1 {
     vertical-align: top;
     margin: 10px;
     height: auto;
-    width: 250px;
+    width: 175px;
+}
+
+.tags i {
+    font-size: 32px;
+    margin: 10px;
+}
+
+.info i {
+    font-size: 26px;
+}
+
+.details {
+    font-size: 16px;
+    padding: 10px;
 }
