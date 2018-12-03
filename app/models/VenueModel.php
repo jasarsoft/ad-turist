@@ -147,4 +147,20 @@
             $prep = DataBase::getInstance()->prepare($SQL);
             return $prep->execute([$venue_id]);
         }
+        
+        /**
+         * Metod vraca spisak slika za odredjeni smjestajni prostor
+         * @param int $venue_id
+         * @return array
+         */
+        public static function getVenueImage($venue_id) {
+            $SQL = 'SELECT * FROM image WHERE venue_id = ?;';
+            $prep = DataBase::getInstance()->prepare($SQL);
+            $res = $prep->execute([$venue_id]);
+            if ($res) {
+                return $prep->fetchAll(PDO::FETCH_OBJ);
+            } else {
+                return [];
+            }
+        }
     }
