@@ -93,8 +93,10 @@
             
             $this->set('categories', VenueCategoryModel::getAll());
             
-            $venue->images = VenueModel::getVenueImage($venue->venue_id);
-            $venue->tags   = VenueModel::getTagsForVenueId($venue->venue_id);
+            $venue->images          = VenueModel::getVenueImage($venue->venue_id);
+            $venue->tags            = VenueModel::getTagsForVenueId($venue->venue_id);
+            $venue->location        = LocationModel::getById($venue->location_id);
+            $venue->venue_category  = VenueCategoryModel::getById($venue->venue_category_id);
             
             $this->set('venue', $venue);
         }
