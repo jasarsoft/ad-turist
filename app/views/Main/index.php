@@ -19,7 +19,7 @@
         </div>
         <div class='col-sm-12 col-md-9'>
             <?php foreach ($DATA['venues'] as $venue): ?>
-            <?php require_once 'app/views/_global/venue_item.php'; ?>
+            <?php require 'app/views/_global/venue_item.php'; ?>
             <?php endforeach; ?>
         </div>
     </div>
