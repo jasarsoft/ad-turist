@@ -48,6 +48,13 @@
                     </form>
                 </div>
                 
+                <div class='col-sm-12 col-md-4'>
+                    <button type='submit' class='btn'>
+                        <i class='glyphicon glyphicon-search' ></i>
+                        Search
+                    </button>
+                </div>
+                
             </div>
         </div>
     </form>
