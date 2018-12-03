@@ -121,7 +121,7 @@
             
             for ($i = 0; $i < count($venues); $i++) {
                 $venues[$i]->images = VenueModel::getVenueImage($venues[$i]->venue_id);
-                $venues[$i]->tabs   = VenueModel::getTagsForVenueId($venues[$i]->venue_id);
+                $venues[$i]->tags   = VenueModel::getTagsForVenueId($venues[$i]->venue_id);
             }
             
             $this->set('venues', $venues);
