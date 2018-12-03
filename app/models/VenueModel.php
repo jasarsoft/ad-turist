@@ -16,6 +16,19 @@
                 return [];
             }
         }
+        
+        public static function getAllPaged($page) {
+            $page = max(0, $page);
+            $first = $page * Configuration::ITEM_PER_PAGE;
+            $SQL = 'SELECT * FROM venue ORDER BY `title` LIMIT ?, ?;';
+            $prep = DataBase::getInstance()->prepare($SQL);
+            $res = $prep->execute([$first, Configuration::ITEM_PER_PAGE]);
+            if ($res) {
+                return $prep->fetchAll(PDO::FETCH_OBJ);
+            } else {
+                return [];
+            }
+        }
 
         /*
          * Metod koji vraca objekat sa podacima smjestajnih kapaciteta (objekata) ciji venue_id je dat kao argument metode

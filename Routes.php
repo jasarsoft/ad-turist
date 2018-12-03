@@ -93,6 +93,12 @@
             'Method'     => 'listByCategory'
         ],
         
+        #index
+        [
+            'Pattern'    => '|^([0-9]+)?/?$|',
+            'Controller' => 'Main',
+            'Method'     => 'index'
+        ],
         [
             'Pattern'    => '|^.*$|',
             'Controller' => 'Main',

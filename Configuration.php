@@ -11,4 +11,6 @@
         const USER_SALT = 'jd38UDDhj83ejd0831jsadikuaZen883';
         
         const IMAGE_DATA_PATH = 'data/images/';
+        
+        const ITEM_PER_PAGE = 5;
     }

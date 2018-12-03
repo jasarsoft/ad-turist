@@ -43,7 +43,7 @@
                 Misc::redirect('admin/locations/');
             }
             
-            $this->set('locations', $location);
+            $this->set('location', $location);
             
             if (empty($_POST)) return;
             

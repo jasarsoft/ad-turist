@@ -5,16 +5,11 @@
      */
     class MainController extends Controller {
         /**
-         * Ovaj metod prepisuje podrazumjevni index metod kontrolera i njegova
-         * uloga je da provjeri da li postoji prijavljeni korisnik u sesiji.
-         * Ako ne postoji, metod preusmjerava posetioce na stranicu za odjavu
-         * Stranica za odjavu ce izvrsiti logout metodo ovog kontrolera, koji ce
-         * na kraju kada ocisti sesiju da preusmjeri posetioca na login stranu.
+         * Osnovni metod pocetne stranice sajta
          */
-        public function index() {
-            if (!Session::exists('user_id')) {
-                Misc::redirect('logout');
-            }
+        public function index($page = 0) {
+            $this->set('categories', VenueCategoryModel::getAll());
+            $this->set('venues', VenueModel::getAllPaged($page));
         }
         
         /**

@@ -1,14 +1,24 @@
 <?php include 'app/views/_global/beforeContent.php'; ?>
 
-<article class="row">
-    <div class="col-xs-12">
-        <h1>Početna stranica</h1>
-        <div class="page-content">
-<pre>
-Prvi koraci su da se promeni Configuration.php i da se setuje prava putanja sajta i podaci za bazu podataka.
-Zatim treba napraviti adekvatne modele za tabele baze podataka, kontrolere i view generatore za njihove metode, kao i adekvatne rute.
-U svakom koraku testirati rad aplikacije.
-</pre>
+<article class="blok">
+    <header>
+        <h1>Smjestajni kapaciteti</h1>
+    </header>
+    
+    <div class='row'>
+        <div class='col-sm-12 col-md-3'>
+            <nav>
+                <ul>
+                    <?php foreach ($DATA['categories'] as $category): ?>
+                    <li>
+                        <?php Misc::url('category/' . $category->slug, $category->name); ?>
+                    </li>
+                    <?php endforeach; ?>
+                </ul>
+            </nav>
+        </div>
+        <div class='col-sm-12 col-md-9'>
+            ...
         </div>
     </div>
 </article>
