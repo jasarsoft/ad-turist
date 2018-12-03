@@ -112,5 +112,18 @@
             $venue_category_id = filter_input(INPUT_POST, 'venue_category_id', FILTER_SANITIZE_NUMBER_INT);
             
             $tag_ids = filter_input(INPUT_POST, 'tag_ids', FILTER_SANITIZE_NUMBER_INT, FILTER_REQUIRE_ARRAY);
+            
+            $venues = VenueModel::homePageSearch($location_id, $venue_category_id, $tag_ids);
+            
+            $this->set('categories', VenueCategoryModel::getAll());
+            $this->set('locations', LocationModel::getAll());
+            $this->set('tags', TagModel::getAll());
+            
+            for ($i = 0; $i < count($venues); $i++) {
+                $venues[$i]->images = VenueModel::getVenueImage($venues[$i]->venue_id);
+                $venues[$i]->tabs   = VenueModel::getTagsForVenueId($venues[$i]->venue_id);
+            }
+            
+            $this->set('venues', $venues);
         }
     }
